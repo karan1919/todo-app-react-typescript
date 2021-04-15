@@ -16,7 +16,7 @@ const newTask = (task = {}) => {
 };
 
 const findIdOfTask = (todos, todoId) => {
-  return todos.indexOf(todos.find((item) => item.id === todoId));
+  return todos.findIndex((todo) => todo.id === todoId);
 };
 
 //eslint-disable-next-line

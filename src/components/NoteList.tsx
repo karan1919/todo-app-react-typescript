@@ -33,8 +33,8 @@ class NoteList extends Component<Props> {
       <Container fluid={true}>
         <div className="d-flex flex-row flex-nowrap overflow-auto">
           {todos.map((todo: Todo) => (
-            <div className="p-3">
-              < Note
+            <div className="p-3" key={todo.id}>
+              <Note
                 key={todo.id}
                 todo={todo}
                 onDelete={onDelete}

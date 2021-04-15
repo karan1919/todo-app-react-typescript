@@ -60,7 +60,7 @@ class TodoDashboard extends Component<State> {
 
   deleteNote = (todoId: string): void => {
     const todos = [...this.state.todos];
-    const newTodos = todos.filter((t) => t.id !== todoId);
+    const newTodos = todos.filter(todo => todo.id !== todoId);
     this.setState({ todos: newTodos });
   };
 
@@ -68,7 +68,7 @@ class TodoDashboard extends Component<State> {
     const todos = [...this.state.todos];
     const todoIndex = helper.findIdOfTask(todos, todoId);
     todos[todoIndex].tasks = todos[todoIndex].tasks.filter(
-      (task) => task.id !== taskId
+      task => task.id !== taskId
     );
     this.setState({ todos });
   };
