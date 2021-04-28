@@ -6,7 +6,7 @@
 
 ## Todo:
 
-1. Extract the Input field into a new component.
+~~1. Extract the Input field into a new component.~~
 2. Add unit tests.
 
 ## Available Scripts
