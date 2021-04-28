@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import Form from "./common/Form";
+import ExtendedForm from './ExtendedForm';
 
 type Props = {
   onFormSubmit: (note: {}) => void;
@@ -38,7 +38,7 @@ class ToggleableNoteForm extends Component<Props, State> {
     if (this.state.toggleForm) {
       return (
         <>
-          <Form
+          <ExtendedForm
             onFormSubmit={this.handleFormSubmit}
             onFormClose={this.handleCloseForm}
           />

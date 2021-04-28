@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
+import Delete from "./common/Delete";
 
 type todo = {
   id: string;
@@ -33,13 +34,7 @@ class Tasks extends Component<Props> {
               <tr key={task.id}>
                 <td className="text-break">{task.task_name}</td>
                 <td>
-                  <Button
-                    variant="outline-danger"
-                    size="sm"
-                    onClick={() => onDelete(todo.id, task.id)}
-                  >
-                    Delete
-                  </Button>
+                  <Delete onClick={() => onDelete(todo.id, task.id)} />
                 </td>
               </tr>
             ))}

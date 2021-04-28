@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import Tasks from "./Tasks";
+import Delete from "./common/Delete"
+import ExtendedForm from './ExtendedForm'
 import { Card } from "react-bootstrap";
 import { Button } from "react-bootstrap";
-import Form from "./common/Form";
 
 type Todo = {
   id: string;
@@ -65,18 +66,12 @@ class Note extends Component<Props, State> {
         <Card.Body>
           <div className="d-flex justify-content-between">
             <Card.Title className="text-break">{todo.title}</Card.Title>
-            <Button
-              size="sm"
-              variant="outline-danger"
-              onClick={() => this.handleDeleteNote(todo.id)}
-            >
-              Delete
-            </Button>
+            <Delete onClick={() => this.handleDeleteNote(todo.id)} />
           </div>
           <hr />
           <Tasks todo={todo} onDelete={onDelete} />
           {toggleForm ? (
-            <Form
+            <ExtendedForm
               onFormSubmit={(task: {}) =>
                 this.handleAddTaskToggle(todo.id, task)
               }
