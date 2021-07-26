@@ -15,13 +15,13 @@ const newTask = (task = {}) => {
   };
 };
 
-const findIdOfTask = (todos, todoId) => {
+const findIdOfNote = (todos, todoId) => {
   return todos.findIndex((todo) => todo.id === todoId);
 };
 
 //eslint-disable-next-line
 export default {
-  newNote: newNote,
-  newTask: newTask,
-  findIdOfTask: findIdOfTask,
+  newNote,
+  newTask,
+  findIdOfNote,
 };

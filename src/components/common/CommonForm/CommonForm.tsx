@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import Input from "./Input"
+import Input from "../Input/Input"
 import { Form, Button } from "react-bootstrap";
+import { NoteFormErrorsType } from "../../../types/NoteForm";
+import { TaskFormErrorsType } from "../../../types/TaskForm";
 
-type Data = {
+type DataType = {
   title: string;
-} | {}
-
-type Errors = {
-  title?: string;
 };
+
+type ErrorsType = NoteFormErrorsType | TaskFormErrorsType
 
 type Props = {
   onFormSubmit: (attributes: {}) => void;
@@ -16,11 +16,13 @@ type Props = {
 }
 
 type State = {
-  data: Data;
-  errors: Errors;
+  data: DataType | {};
+  errors: ErrorsType;
 }
 
 class CommonForm extends Component<Props, State> {
+  [x: string]: any;
+
   state: State = {
     data: {},
     errors: {},
@@ -34,8 +36,8 @@ class CommonForm extends Component<Props, State> {
     this.setState({ data });
   };
 
-  validate = (): Errors | null => {
-    const errors: Errors = {};
+  validate = (): ErrorsType | null => {
+    const errors: ErrorsType = {};
     const data = { ...this.state.data };
 
     if (!data.title) {
@@ -54,12 +56,6 @@ class CommonForm extends Component<Props, State> {
 
     this.doSubmit();
   };
-
-  doSubmit = () => {
-    const data = { ...this.state.data };
-    const title = data.title;
-    this.props.onFormSubmit({ title });
-  }
 
   renderInput = (controlId: string, type: string, placeholder: string) => {
     const { data, errors } = this.state;

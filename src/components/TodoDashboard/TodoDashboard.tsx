@@ -1,22 +1,13 @@
 import React, { Component } from "react";
-import NoteList from "./NoteList";
-import ToggleableNoteForm from "./ToggleableNoteForm";
-import helper from "../helper";
+import NoteList from "../NoteList/NoteList";
+import ToggleableForm from "../ToggleableForm/ToggleableForm";
+import helper from "../../helper";
+import { TodosType } from "../../types/Todo"
 
 type State = {
-  todos: Todos;
+  todos: TodosType;
 }
 
-type Todos = {
-  id: string;
-  title: string;
-  tasks: Tasks;
-}[];
-
-type Tasks = {
-  id: string;
-  task_name: string;
-}[];
 class TodoDashboard extends Component<State> {
   state: State = {
     todos: [
@@ -53,7 +44,7 @@ class TodoDashboard extends Component<State> {
   createTask = (todoId: string, task: {}): void => {
     const todos = [...this.state.todos];
     const newTask = helper.newTask(task);
-    const todoIndex = helper.findIdOfTask(todos, todoId);
+    const todoIndex = helper.findIdOfNote(todos, todoId);
     todos[todoIndex].tasks = todos[todoIndex].tasks.concat(newTask);
     this.setState({ todos });
   };
@@ -66,7 +57,7 @@ class TodoDashboard extends Component<State> {
 
   deleteTask = (todoId: string, taskId: string): void => {
     const todos = [...this.state.todos];
-    const todoIndex = helper.findIdOfTask(todos, todoId);
+    const todoIndex = helper.findIdOfNote(todos, todoId);
     todos[todoIndex].tasks = todos[todoIndex].tasks.filter(
       task => task.id !== taskId
     );
@@ -93,7 +84,7 @@ class TodoDashboard extends Component<State> {
     const { todos } = this.state;
     return (
       <>
-        {todos.length === 0 ? <h3>{`No tasks to complete!`}</h3>
+        {todos.length === 0 ? <h3>No tasks to complete!</h3>
           : <NoteList
             todos={this.state.todos}
             onDelete={this.handleTaskDelete}
@@ -102,8 +93,10 @@ class TodoDashboard extends Component<State> {
           />}
 
         <div className="m-5">
-          <ToggleableNoteForm
+          <ToggleableForm
             onFormSubmit={this.handleCreateNoteSubmit}
+            formType={"NoteForm"}
+            buttonText={"Create Note"}
           />
         </div>
       </>

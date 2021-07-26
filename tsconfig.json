@@ -16,6 +16,6 @@
     "noEmit": true, // Do not emit output (meaning do not compile code, only perform type checking)
     "jsx": "react-jsx" // Support JSX in .tsx files
   },
-  "include": ["src"],
+  "include": ["src", "src/setupTests.js"],
   "exclude": ["node_modules", "build"]
 }

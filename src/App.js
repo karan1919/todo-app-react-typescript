@@ -1,4 +1,4 @@
-import TodoDashboard from "./components/TodoDashboard";
+import TodoDashboard from "./components/TodoDashboard/TodoDashboard";
 import "./App.css";
 
 function App() {
