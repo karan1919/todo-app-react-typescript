@@ -3,6 +3,7 @@
 1. Get a taste of Typescript.
 2. React basic practices (lifting the state up, Event handlers).
 3. Basic Form Input
+4. Unit Testing
 
 ## Todo:
 
